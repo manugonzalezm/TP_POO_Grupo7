@@ -28,10 +28,6 @@ public class FuncionesMenu {
         }
     }
 
-    private String pedirInput(Scanner scanner){
-        return scanner.nextLine();
-    }
-
     public static void mostrarMenuPrincipal() {
         boolean ejecutarMenu = true;
 
@@ -122,11 +118,12 @@ public class FuncionesMenu {
                             // Ver Carta de comidas visibles (FALTA FILTRAR POR DISPONIBLE = TRUE)
                             List cartaComidas = leerArchivoCarta();
                             for (int i = 0; i < cartaComidas.size(); i++){
-                                System.out.println(cartaComidas.get(i));
+                                System.out.println(cartaComidas.get(i).toString());
                             }
                             break;
                         case 2:
                             // Crear nuevo plato
+
                             break;
                         case 3:
                             // Editar plato existente

@@ -27,4 +27,9 @@ public class Postre extends Comida {
     public void setParaCompartir(boolean paraCompartir) {
         this.paraCompartir = paraCompartir;
     }
+
+    // toString
+    public String toString() {
+        return super.toString() + "\t\tSinTacc: " + sinTacc + "\t\tPara Compartir: " + paraCompartir;
+        }
 }
