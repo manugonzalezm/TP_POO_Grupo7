@@ -6,7 +6,8 @@ public class Pizza extends Comida {
     public boolean sinTacc;
 
     // Constructor de la clase
-    public Pizza(String nombre, double precio, boolean disponible, String descripcion, String tipo, String queso, String estilo, boolean sinTacc) {
+    public Pizza(String nombre, double precio, boolean disponible, String descripcion, String tipo,
+                 String queso, String estilo, boolean sinTacc) {
         super(nombre, precio, disponible, descripcion, tipo);
         this.queso = queso;
         this.estilo = estilo;

@@ -5,7 +5,8 @@ public class Postre extends Comida {
     public boolean paraCompartir;
 
     // Constructor de la clase
-    public Postre(String nombre, double precio, boolean disponible, String descripcion, String tipo, boolean sinTacc, boolean paraCompartir) {
+    public Postre(String nombre, double precio, boolean disponible, String descripcion,
+                  String tipo, boolean sinTacc, boolean paraCompartir) {
         super(nombre, precio, disponible, descripcion, tipo);
         this.sinTacc = sinTacc;
         this.paraCompartir = paraCompartir;

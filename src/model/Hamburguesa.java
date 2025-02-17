@@ -10,7 +10,8 @@ public class Hamburguesa extends Comida{
     public List<String> condimentos;
 
     // Constructor de la clase
-    public Hamburguesa(String nombre, double precio, boolean disponible, String descripcion, String tipo, int cantPatys, boolean veggie, String tipoPan, String salsa, List<String> condimentos) {
+    public Hamburguesa(String nombre, double precio, boolean disponible, String descripcion, String tipo, int cantPatys,
+                       boolean veggie, String tipoPan, String salsa, List<String> condimentos) {
         super(nombre, precio, disponible, descripcion, tipo);
         this.cantPatys = cantPatys;
         this.veggie = veggie;

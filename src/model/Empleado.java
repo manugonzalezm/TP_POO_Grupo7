@@ -89,7 +89,7 @@ public class Empleado {
     }
 
     //
-    private Cliente verClienteByPedido () {
+    private Cliente verClientePorPedido () {
         return null; // return temporario hasta tener logica de codigo
     }
 
