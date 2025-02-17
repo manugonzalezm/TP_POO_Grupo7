@@ -106,4 +106,11 @@ public class Pedido {
     public void setIdCliente(String idCliente) {
         this.idCliente = idCliente;
     }
+
+    //toString
+    public String toString() {
+        return super.toString() + "Direccion: " + direccion + "\t\tHoraPedido: " + horaPedido + "\t\tHoraEstimada: " + horaEstimada +
+                "\nContenido: " + contenido + "\nComentario: " + comentario + "\nImporte: $" + importe + "\t\tPropina: $"+ propina + "\t\tMedioPago: " + medioPago +
+                "\nStatus: " + status + "\t\tRepasignado: " + repAsignado + "\t\tIdCliente: " + idCliente + "\t\tIdPedido: " + idPedido;
+    }
 }

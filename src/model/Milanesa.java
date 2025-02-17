@@ -20,4 +20,9 @@ public class Milanesa extends Comida{
     public void setTamanios(List<String> tamanios) {
         this.tamanios = tamanios;
     }
+
+    // toString
+    public String toString() {
+        return super.toString() + "\t\tTamanios: " + tamanios;
+    }
 }

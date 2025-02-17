@@ -35,4 +35,11 @@ public class Pizza extends Comida {
     public void setSinTacc(boolean sinTacc) {
         this.sinTacc = sinTacc;
     }
+
+    // toString
+    public String toString() {
+        return super.toString() + "Queso: " + queso + "\t\tEstilo: " + estilo +  "\t\tSinTacc: " + sinTacc;
+
+    }
 }
+

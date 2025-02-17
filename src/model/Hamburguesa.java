@@ -53,4 +53,11 @@ public class Hamburguesa extends Comida{
     public void setCondimentos(List<String> condimentos) {
         this.condimentos = condimentos;
     }
+
+    //toString
+    public String toString() {
+
+        return super.toString() + "CantPatys: " + cantPatys + "\t\tVeggie: " + veggie + "\t\tTipoPan: " + tipoPan + "\t\tSalsa: " + salsa + "\nCondimentos: " + condimentos;
+
+    }
 }

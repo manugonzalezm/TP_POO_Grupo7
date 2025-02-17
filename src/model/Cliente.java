@@ -43,4 +43,9 @@ public class Cliente {
     public void setPedidosHechos(List<Pedido> pedidosHechos) {
         this.pedidosHechos = pedidosHechos;
     }
+
+    //toString
+    public String toString() {
+        return super.toString() + "IdCliente: " + idCliente + "\t\tTelefono: " + telefono + "\t\tCantPedidos: " + cantPedidos + "\t\tPedidos: " + pedidosHechos;
+    }
 }
