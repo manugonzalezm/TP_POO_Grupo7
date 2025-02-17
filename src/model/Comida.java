@@ -52,4 +52,9 @@ public abstract class Comida {
         this.tipo = tipo;
     }
 
+    // toString
+    public String toString() {
+        return "Nombre: " + nombre + "\tPrecio: $" + precio + "\tDisponible: " + disponible + "\nDescripcion: " + descripcion + "\tTipo: " + tipo;
+
+    }
 }
