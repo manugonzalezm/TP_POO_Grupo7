@@ -26,4 +26,9 @@ public class Pasta extends Comida{
     public void setCasero(boolean casero) {
         this.casero = casero;
     }
+
+    // toString
+    public String toString() {
+        return super.toString() + "\nSalsa: " + salsa + "\nCasero: " + casero;
+    }
 }

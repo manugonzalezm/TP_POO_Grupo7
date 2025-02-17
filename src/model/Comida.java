@@ -54,7 +54,7 @@ public abstract class Comida {
 
     // toString
     public String toString() {
-        return "Nombre: " + nombre + "\tPrecio: $" + precio + "\tDisponible: " + disponible + "\nDescripcion: " + descripcion + "\tTipo: " + tipo;
+        return "Nombre: " + nombre + "\t\tPrecio: $" + precio + "\t\tDisponible: " + disponible + "\t\tDescripcion: " + descripcion + "\nTipo: " + tipo;
 
     }
 }
