@@ -1,9 +1,13 @@
 package service;
+import model.*;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import static constants.Constantes.*;
 import static service.FuncionesArchivos.leerArchivoCarta;
+import static service.FuncionesComida.parseComida;
 
 public class FuncionesMenu {
     private static void imprimirOpciones(String menu) {
@@ -26,6 +30,10 @@ public class FuncionesMenu {
             default:
                 System.out.println(MENSAJE_ERROR_MENU);
         }
+    }
+
+    private static String pedirInput(Scanner scanner){
+        return scanner.nextLine();
     }
 
     public static void mostrarMenuPrincipal() {
@@ -101,9 +109,6 @@ public class FuncionesMenu {
                         case 2:
                             // Ver repartidores
                             break;
-                        case 3:
-                            // ver Repartidor por Pedido
-                            break;
                         case 0:
                             volverAMenuPrincipal = true;
                             break;
@@ -115,7 +120,7 @@ public class FuncionesMenu {
                 case ID_SUBMENU_COMIDAS:
                     switch(opcionSubmenu){
                         case 1:
-                            // Ver Carta de comidas visibles (FALTA FILTRAR POR DISPONIBLE = TRUE)
+                            // Ver Carta de comidas
                             List cartaComidas = leerArchivoCarta();
                             for (int i = 0; i < cartaComidas.size(); i++){
                                 System.out.println(cartaComidas.get(i).toString());
@@ -131,9 +136,6 @@ public class FuncionesMenu {
                         case 4:
                             // Cambiar disponibilidad de plato existente (BAJA)
                             break;
-                        case 5:
-                            // Ver Carta de comidas VISIBLES Y NO VISIBLES
-                            break;
                         case 0:
                             volverAMenuPrincipal = true;
                             break;
@@ -146,15 +148,6 @@ public class FuncionesMenu {
                     switch(opcionSubmenu){
                         case 1:
                             // Generar reporte Diario
-                            break;
-                        case 2:
-                            // Generar reporte Mensual
-                            break;
-                        case 3:
-                            // Consultar cantidad de pedidos del empleado
-                            break;
-                        case 4:
-                            // Consultar cantidad de pedidos por repartidor
                             break;
                         case 0:
                             volverAMenuPrincipal = true;
