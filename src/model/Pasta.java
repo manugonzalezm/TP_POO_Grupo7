@@ -1,4 +1,4 @@
-import java.util.List;
+package model;
 
 public class Pasta extends Comida{
     public String salsa;

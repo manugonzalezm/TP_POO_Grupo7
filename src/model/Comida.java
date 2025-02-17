@@ -1,4 +1,4 @@
-/* Esta clase es abstracta */
+package model;/* Esta clase es abstracta */
 
 public abstract class Comida {
     /* Agregamos los atributos */

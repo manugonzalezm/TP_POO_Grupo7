@@ -1,3 +1,5 @@
+package model;
+
 public class Postre extends Comida {
     public boolean sinTacc;
     public boolean paraCompartir;
