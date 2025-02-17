@@ -7,7 +7,7 @@ import static constants.Constantes.ARCHIVO_CARTA;
 
 public class FuncionesArchivos {
 
-    private static String RUTA_BASE_ARCHIVOS = "/Users/manuelgonzalezmourino/Documents/GitHub/TP_POO_Grupo7/src/resources/";
+    private static String RUTA_BASE_ARCHIVOS =  "/Users/manuelgonzalezmourino/Documents/GitHub/TP_POO_Grupo7/src/resources/";
 
     private static boolean existeArchivo(String rutaArchivo) {
         // Ruta del archivo a comprobar
@@ -64,7 +64,7 @@ public class FuncionesArchivos {
         String rutaArchivo = ARCHIVO_CARTA;
         List cartaComidas = new ArrayList();
 
-        if (existeArchivo(rutaArchivo)) {
+        if (existeArchivo(RUTA_BASE_ARCHIVOS + rutaArchivo)) {
             try (BufferedReader br = new BufferedReader(new FileReader(RUTA_BASE_ARCHIVOS + rutaArchivo))) {
                 String linea;
                 while ((linea = br.readLine()) != null) {
@@ -120,7 +120,7 @@ public class FuncionesArchivos {
                 System.out.println("Error al leer el archivo: " + e.getMessage());
             }
         } else {
-            System.out.println("Error al leer el archivo: " + RUTA_BASE_ARCHIVOS + rutaArchivo);
+            System.out.println("Error al determinar existencia del archivo: " + RUTA_BASE_ARCHIVOS + rutaArchivo);
         }
 
 
