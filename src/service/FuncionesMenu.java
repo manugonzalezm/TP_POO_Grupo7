@@ -1,9 +1,11 @@
 package service;
+import java.util.List;
 import java.util.Scanner;
 
 import static constants.Constantes.*;
+import static service.FuncionesArchivos.leerArchivoCarta;
 
-public class Funciones {
+public class FuncionesMenu {
     private static void imprimirOpciones(String menu) {
         switch (menu){
             case ID_MENU_PRINCIPAL:
@@ -117,7 +119,11 @@ public class Funciones {
                 case ID_SUBMENU_COMIDAS:
                     switch(opcionSubmenu){
                         case 1:
-                            // Ver Carta de comidas
+                            // Ver Carta de comidas visibles (FALTA FILTRAR POR DISPONIBLE = TRUE)
+                            List cartaComidas = leerArchivoCarta();
+                            for (int i = 0; i < cartaComidas.size(); i++){
+                                System.out.println(cartaComidas.get(i));
+                            }
                             break;
                         case 2:
                             // Crear nuevo plato
@@ -127,6 +133,9 @@ public class Funciones {
                             break;
                         case 4:
                             // Cambiar disponibilidad de plato existente (BAJA)
+                            break;
+                        case 5:
+                            // Ver Carta de comidas VISIBLES Y NO VISIBLES
                             break;
                         case 0:
                             volverAMenuPrincipal = true;
@@ -165,7 +174,5 @@ public class Funciones {
         }
 
     }
-
-
 
 }
