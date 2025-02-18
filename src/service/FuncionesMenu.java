@@ -3,10 +3,13 @@ import model.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 import static constants.Constantes.*;
+import static service.FuncionesArchivos.escribirArchivoMenu;
 import static service.FuncionesArchivos.leerArchivoCarta;
+import static service.FuncionesComida.crearPlato;
 import static service.FuncionesComida.parseComida;
 
 public class FuncionesMenu {
@@ -32,8 +35,17 @@ public class FuncionesMenu {
         }
     }
 
-    private static String pedirInput(Scanner scanner){
+    public static String pedirInput(Scanner scanner){
         return scanner.nextLine();
+    }
+
+    private static void imprimirLineaSeparacion(int longitud, char simbolo){
+        for (int i = 0; i < longitud; i++) {
+            System.out.print(simbolo);
+            if (i==longitud-1){
+                System.out.println("");
+            }
+        }
     }
 
     public static void mostrarMenuPrincipal() {
@@ -81,6 +93,8 @@ public class FuncionesMenu {
 
         while(!volverAMenuPrincipal){
             int opcionSubmenu = scanner.nextInt();  // Leer opción seleccionada por el usuario
+            scanner.nextLine();  // Limpiar el buffer de la entrada
+
             switch (submenu){
                 case ID_SUBMENU_PEDIDOS:
                     switch(opcionSubmenu){
@@ -122,16 +136,23 @@ public class FuncionesMenu {
                         case 1:
                             // Ver Carta de comidas
                             List cartaComidas = leerArchivoCarta();
+                            System.out.println("- CARTA DE PLATOS");
+                            imprimirLineaSeparacion(165, '*');
                             for (int i = 0; i < cartaComidas.size(); i++){
                                 System.out.println(cartaComidas.get(i).toString());
+                                imprimirLineaSeparacion(165, '*');
                             }
                             break;
                         case 2:
                             // Crear nuevo plato
-
+                            List atributos = new ArrayList<>();
+                            atributos = crearPlato(atributos, scanner);
+                            escribirArchivoMenu(String.join(";", atributos));
+                            System.out.println("Se creó el siguiente plato\n" + parseComida(atributos).toString());
+                            volverAMenuPrincipal = true;
                             break;
                         case 3:
-                            // Editar plato existente
+                            // Cambiar precio a plato existente
                             break;
                         case 4:
                             // Cambiar disponibilidad de plato existente (BAJA)
