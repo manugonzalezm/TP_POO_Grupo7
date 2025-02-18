@@ -6,6 +6,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
+
 import static constants.Constantes.ARCHIVO_CARTA;
 import static service.FuncionesComida.parseComida;
 
@@ -46,6 +48,31 @@ public class FuncionesArchivos {
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Error al escribir el archivo en " + RUTA_BASE_ARCHIVOS + "carta_comidas.txt");
+        }
+    }
+
+    public void modificarArchivoMenu(String param, String nuevoValor, Scanner scanner) {
+        List<String> lineas = new ArrayList<>();
+
+         /*try {
+            // Leer todas las líneas del archivo
+            BufferedReader reader = new BufferedReader(new FileReader(rutaArchivo));
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                // Verificamos si la línea contiene el nombre que estamos buscando
+                if (linea.contains(lineaBusqueda)) {
+                    // Si es la línea que buscamos, la reemplazamos
+                    lineas.add(nuevaLinea);
+                } else {
+                    // Si no, agregamos la línea tal cual
+                    lineas.add(linea);
+                }
+            } */
+
+        if (param == "precio"){
+
+        } else if (param == "disponibilidad") {
+
         }
     }
 
