@@ -127,12 +127,43 @@ public class FuncionesMenu {
                     }
                     break;
                 case ID_SUBMENU_REPARTIDORES:
-                    switch(opcionSubmenu){
+                    switch(opcionSubmenu) {
                         case 1:
                             // Asignar Repartidor a Pedido
+                            System.out.print("Ingrese el ID del pedido: ");
+                            if (scanner.hasNextInt()) {
+                                int idPedido = scanner.nextInt();
+                                scanner.nextLine();
+
+                                Pedido pedido = FuncionesPedido.buscarPedidoPorId(idPedido);
+
+                                if (pedido != null) {
+                                    FuncionesRepartidor.asignarRepartidor(pedido);
+                                } else {
+                                    System.out.println("Pedido no encontrado.");
+                                }
+                            } else {
+                                System.out.println("Entrada inválida. Debe ingresar un número.");
+                                scanner.nextLine();
+                            }
                             break;
+
                         case 2:
                             // Ver repartidores
+                            FuncionesRepartidor.verRepartidores();
+                            break;
+                        case 3:
+                            // Agregar repartidor
+                            System.out.print("Ingrese el ID del nuevo repartidor: ");
+                            String idRepartidor = scanner.nextLine();
+                            Repartidor nuevoRepartidor = new Repartidor(idRepartidor, 0, new java.util.ArrayList<>(), true);
+                            FuncionesRepartidor.agregarRepartidor(nuevoRepartidor);
+                            break;
+                        case 4:
+                            // Eliminar repartidor
+                            System.out.print("Ingrese el ID del repartidor a eliminar: ");
+                            String idEliminar = scanner.nextLine();
+                            FuncionesRepartidor.eliminarRepartidor(idEliminar);
                             break;
                         case 0:
                             volverAMenuPrincipal = true;
@@ -140,8 +171,9 @@ public class FuncionesMenu {
                         default:
                             System.out.println("OPCION INVALIDA... VOLVIENDO AL MENU PRINCIPAL");
                             volverAMenuPrincipal = true;
+
+                            break;
                     }
-                    break;
                 case ID_SUBMENU_COMIDAS:
                     switch(opcionSubmenu){
                         case 1:
