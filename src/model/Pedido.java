@@ -108,9 +108,10 @@ public class Pedido {
     }
 
     //toString
+    @Override
     public String toString() {
-        return super.toString() + "Direccion: " + direccion + "\t\tHoraPedido: " + horaPedido + "\t\tHoraEstimada: " + horaEstimada +
-                "\nContenido: " + contenido + "\nComentario: " + comentario + "\nImporte: $" + importe + "\t\tPropina: $"+ propina + "\t\tMedioPago: " + medioPago +
-                "\nStatus: " + status + "\t\tRepasignado: " + repAsignado + "\t\tIdCliente: " + idCliente + "\t\tIdPedido: " + idPedido;
+        return super.toString() + "\t\tIdPedido: " + idPedido + "\t\tDireccion: " + direccion + "\nComentario: " + comentario + "\t\tHoraPedido: " + horaPedido + "\t\tHoraEstimada: " + horaEstimada +
+                "\nContenido: " + contenido + "\t\tPropina: $"+ propina + "\nImporte: $" + importe + "\t\tMedioPago: " + medioPago + "\nStatus: " + status + "\t\tRepasignado: " + repAsignado +
+                "\t\tIdCliente: " + idCliente;
     }
 }

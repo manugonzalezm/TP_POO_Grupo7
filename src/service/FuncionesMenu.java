@@ -100,12 +100,23 @@ public class FuncionesMenu {
                     switch(opcionSubmenu){
                         case 1:
                             // verPedidos
+                            FuncionesPedido.mostrarPedidos();  // Llamada a la función para mostrar pedidos
                             break;
                         case 2:
                             // Cambiar estado de pedido
+                            System.out.println("Ingrese el ID del pedido:");
+                            int idPedido = scanner.nextInt();
+                            scanner.nextLine();  // Limpiar el buffer
+                            System.out.println("Ingrese el nuevo estado del pedido:");
+                            String nuevoStatus = scanner.nextLine();
+                            FuncionesPedido.cambiarEstadoPedido(idPedido, nuevoStatus);  // Llamada a la función para cambiar el estado
                             break;
                         case 3:
                             // Ver cliente por pedido
+                            System.out.println("Ingrese el ID del pedido:");
+                            int idClientePedido = scanner.nextInt();
+                            scanner.nextLine();  // Limpiar el buffer
+                            FuncionesPedido.verClientePorPedido(idClientePedido);  // Llamada a la función para ver el cliente por pedido
                             break;
                         case 0:
                             volverAMenuPrincipal = true;

@@ -1,0 +1,25 @@
+model.Pedido@533ddba		IdPedido: 1		Direccion: Av. Siempre Viva 742
+Comentario: Sin comentarios		HoraPedido: Sun Feb 18 20:46:40 GMT-03:00 2024		HoraEstimada: Sun Feb 18 21:46:40 GMT-03:00 2024
+Contenido: [Pizza, Hamburguesa]		Propina: $10.5
+Importe: $25.0		MedioPago: Efectivo
+Status: Pendiente		Repasignado: Repartidor1		IdCliente: 12345
+model.Pedido@246b179d		IdPedido: 2		Direccion: Av Independencia 148
+Comentario: Sin comentarios		HoraPedido: Sun Feb 18 20:46:40 GMT-03:00 2024		HoraEstimada: Sun Feb 18 21:46:40 GMT-03:00 2024
+Contenido: [Pizza]		Propina: $10.5
+Importe: $25.0		MedioPago: Efectivo
+Status: Entregado		Repasignado: Repartidor2		IdCliente: 67890
+model.Pedido@7a07c5b4		IdPedido: 3		Direccion: Calle Falsa 123
+Comentario: Pedido urgente		HoraPedido: Sun Feb 18 23:33:20 GMT-03:00 2024		HoraEstimada: Mon Feb 19 00:33:20 GMT-03:00 2024
+Contenido: [Pasta]		Propina: $15.0
+Importe: $40.0		MedioPago: Tarjeta
+Status: Pendiente		Repasignado: Repartidor3		IdCliente: 11223
+model.Pedido@26a1ab54		IdPedido: 4		Direccion: Calle Nueva 456
+Comentario: Sin comentarios		HoraPedido: Mon Feb 19 00:06:40 GMT-03:00 2024		HoraEstimada: Mon Feb 19 01:06:40 GMT-03:00 2024
+Contenido: [Hamburguesa, Ensalada]		Propina: $8.0
+Importe: $30.0		MedioPago: Efectivo
+Status: Pendiente		Repasignado: Repartidor4		IdCliente: 44556
+model.Pedido@3d646c37		IdPedido: 5		Direccion: Av. Los Olivos 789
+Comentario: Sin comentarios		HoraPedido: Mon Feb 19 00:40:00 GMT-03:00 2024		HoraEstimada: Mon Feb 19 01:40:00 GMT-03:00 2024
+Contenido: [Pizza]		Propina: $12.0
+Importe: $35.0		MedioPago: Tarjeta
+Status: PENDIENTE		Repasignado: Repartidor5		IdCliente: 78901

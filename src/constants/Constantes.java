@@ -30,6 +30,8 @@ public class Constantes {
     public static final int ATRIBUTOS_PASTA = ATRIBUTOS_COMIDA + 2;
     public static final int ATRIBUTOS_MILANESA = ATRIBUTOS_COMIDA + 1;
 
+    //PEDIDO
+    public static final String ARCHIVO_PEDIDOS = "pedidos.txt";
 
 
 }
