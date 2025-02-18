@@ -110,4 +110,17 @@ public class FuncionesPedido {
             System.out.println("Error al guardar los pedidos.");
         }
     }
+    private static List<Pedido> listaPedidos;
+
+    public static List<Pedido> getListaPedidos() {
+        return listaPedidos;
+    }
+    public static Pedido buscarPedidoPorId(int idPedido) {
+        for (Pedido pedido : listaPedidos) {
+            if (pedido.getIdPedido() == idPedido) {
+                return pedido;
+            }
+        }
+        return null;
+    }
 }
