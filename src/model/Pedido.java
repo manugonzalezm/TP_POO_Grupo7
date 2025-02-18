@@ -1,5 +1,6 @@
 package model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class Pedido {
     public String repAsignado;
     public String idCliente;
 
+    //Constructor
     public Pedido(int idPedido, String direccion, String comentario, Date horaPedido, Date horaEstimada, List contenido,
                   double propina, double importe, String medioPago, String status, String repAsignado, String idCliente) {
         this.idPedido = idPedido;
@@ -110,8 +112,14 @@ public class Pedido {
     //toString
     @Override
     public String toString() {
-        return super.toString() + "\t\tIdPedido: " + idPedido + "\t\tDireccion: " + direccion + "\nComentario: " + comentario + "\t\tHoraPedido: " + horaPedido + "\t\tHoraEstimada: " + horaEstimada +
-                "\nContenido: " + contenido + "\t\tPropina: $"+ propina + "\nImporte: $" + importe + "\t\tMedioPago: " + medioPago + "\nStatus: " + status + "\t\tRepasignado: " + repAsignado +
-                "\t\tIdCliente: " + idCliente;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  // Formato para las fechas
+        String contenidoStr = String.join(",", contenido);  // Convierte la lista de contenido a un string separado por comas
+
+        return String.format(
+                "IdPedido: %d\tDireccion: %s\nComentario: %s\nHoraPedido: %s\tHoraEstimada: %s\nContenido: %s\nPropina: $%.2f\nImporte: $%.2f\nMedioPago: %s\nStatus: %s\nRepAsignado: %s\nIdCliente: %s",
+                idPedido, direccion, comentario,
+                sdf.format(horaPedido), sdf.format(horaEstimada),
+                contenidoStr, propina, importe, medioPago, status, repAsignado, idCliente
+        );
     }
 }
