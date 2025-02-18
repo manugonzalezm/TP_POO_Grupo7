@@ -1,13 +1,17 @@
 package service;
 import model.*;
 import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import static constants.Constantes.ARCHIVO_CARTA;
+import static service.FuncionesComida.parseComida;
 
 public class FuncionesArchivos {
 
-    private static String RUTA_BASE_ARCHIVOS =  "/Users/manuelgonzalezmourino/Documents/GitHub/TP_POO_Grupo7/src/resources/";
+    private static String RUTA_BASE_ARCHIVOS =  "src/resources/";
 
     private static boolean existeArchivo(String rutaArchivo) {
         // Ruta del archivo a comprobar
@@ -69,7 +73,9 @@ public class FuncionesArchivos {
                 String linea;
                 while ((linea = br.readLine()) != null) {
                     String[] partes = linea.split(";");
-                    String nombre = partes[0];
+                    List<String> atributos = Arrays.asList(partes);
+                    cartaComidas.add(parseComida(atributos));
+                    /* String nombre = partes[0];
                     // Formateo de precio
                     double precio = Double.parseDouble(partes[1]);
                     // Formateo de disponibilidad
@@ -113,7 +119,7 @@ public class FuncionesArchivos {
                             break;
                         default:
                             System.out.println("Error leyendo el tipo de comida.");
-                    }
+                    } */
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -122,7 +128,6 @@ public class FuncionesArchivos {
         } else {
             System.out.println("Error al determinar existencia del archivo: " + RUTA_BASE_ARCHIVOS + rutaArchivo);
         }
-
 
         return cartaComidas;
     }
