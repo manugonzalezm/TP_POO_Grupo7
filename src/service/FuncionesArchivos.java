@@ -9,11 +9,12 @@ import java.util.List;
 import java.util.Scanner;
 
 import static constants.Constantes.ARCHIVO_CARTA;
+import static constants.Constantes.ARCHIVO_COMIDAS;
 import static service.FuncionesComida.parseComida;
 
 public class FuncionesArchivos {
 
-    private static String RUTA_BASE_ARCHIVOS =  "src/resources/";
+    static String RUTA_BASE_ARCHIVOS =  "src/resources/";
 
     private static boolean existeArchivo(String rutaArchivo) {
         // Ruta del archivo a comprobar
@@ -40,14 +41,14 @@ public class FuncionesArchivos {
 
     public static void escribirArchivoMenu(String nuevoPlato) {
 
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(RUTA_BASE_ARCHIVOS + "carta_comidas.txt", true))) {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(RUTA_BASE_ARCHIVOS + ARCHIVO_COMIDAS , true))) {
             // El segundo parámetro 'true' permite agregar al archivo en lugar de sobrescribir
             // Añadir una nueva línea al archivo
             bw.write(nuevoPlato);
             bw.newLine();
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Error al escribir el archivo en " + RUTA_BASE_ARCHIVOS + "carta_comidas.txt");
+            System.out.println("Error al escribir el archivo en " + RUTA_BASE_ARCHIVOS + ARCHIVO_COMIDAS);
         }
     }
 
@@ -76,9 +77,9 @@ public class FuncionesArchivos {
         }
     }
 
-    public static void crearArchivo(String nombreArchivo, String formato) {
+    public static void crearArchivo(String nombreArchivo) {
         // Ruta del archivo que queremos crear
-        File archivo = new File(RUTA_BASE_ARCHIVOS + nombreArchivo + formato);
+        File archivo = new File(RUTA_BASE_ARCHIVOS + nombreArchivo);
 
         try {
             if (archivo.createNewFile()) {
@@ -91,13 +92,22 @@ public class FuncionesArchivos {
         }
     }
 
+    public static List checkAndCreateFile(String nombreArchivo, List listaALlenar) {
+        if (existeArchivo(RUTA_BASE_ARCHIVOS + nombreArchivo)) {
+            System.out.println("El archivo" + nombreArchivo + "ya existe");
+            return listaALlenar;
+        } else {
+            crearArchivo(nombreArchivo);
+            System.out.println("Se creó el archivo" + nombreArchivo + " porque no existia");
+            return listaALlenar;
+        }
+    }
 
     public static List leerArchivoCarta() {
-        String rutaArchivo = ARCHIVO_CARTA;
         List cartaComidas = new ArrayList();
 
-        if (existeArchivo(RUTA_BASE_ARCHIVOS + rutaArchivo)) {
-            try (BufferedReader br = new BufferedReader(new FileReader(RUTA_BASE_ARCHIVOS + rutaArchivo))) {
+        if (existeArchivo(RUTA_BASE_ARCHIVOS + ARCHIVO_COMIDAS)) {
+            try (BufferedReader br = new BufferedReader(new FileReader(RUTA_BASE_ARCHIVOS + ARCHIVO_COMIDAS))) {
                 String linea;
                 while ((linea = br.readLine()) != null) {
                     String[] partes = linea.split(";");
@@ -109,7 +119,7 @@ public class FuncionesArchivos {
                 System.out.println("Error al leer el archivo: " + e.getMessage());
             }
         } else {
-            System.out.println("Error al determinar existencia del archivo: " + RUTA_BASE_ARCHIVOS + rutaArchivo);
+            System.out.println("Error al determinar existencia del archivo: " + RUTA_BASE_ARCHIVOS + ARCHIVO_COMIDAS);
         }
 
         return cartaComidas;

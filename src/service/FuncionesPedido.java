@@ -4,6 +4,8 @@ import model.*;
 import java.io.*;
 import java.util.*;
 import static constants.Constantes.ARCHIVO_PEDIDOS;
+import static constants.Constantes.ESTATUS_PEDIDOS;
+import static service.FuncionesMenu.imprimirLineaSeparacion;
 
 public class FuncionesPedido {
 
@@ -17,7 +19,6 @@ public class FuncionesPedido {
             while ((linea = br.readLine()) != null) {
                 String[] datos = linea.split(";");
                 // Verifica que los datos estén bien formateados
-                if (datos.length == 12) { // Asegúrate de que haya 12 datos por cada línea
                     Pedido pedido = new Pedido(
                             Integer.parseInt(datos[0]),   // idPedido
                             datos[1],                     // direccion
@@ -33,9 +34,6 @@ public class FuncionesPedido {
                             datos[11]                      // idCliente
                     );
                     pedidos.add(pedido);
-                } else {
-                    System.out.println("Línea de datos malformada: " + linea);
-                }
             }
         } catch (IOException | NumberFormatException e) {
             e.printStackTrace();
@@ -53,18 +51,42 @@ public class FuncionesPedido {
         } else {
             for (Pedido pedido : pedidos) {
                 System.out.println(pedido);
+                imprimirLineaSeparacion(165, '*');
             }
         }
     }
 
     // Cambiar el estado de un pedido específico
-    public static void cambiarEstadoPedido(int idPedido, String nuevoStatus) {
-        List<Pedido> pedidos = leerPedidos(); // Leer todos los pedidos
+    public static List cambiarEstadoPedido(Scanner scanner, List<Pedido> listaPedidos) {
+        System.out.println("Ingrese el ID del pedido:");
+        int idPedido = scanner.nextInt();
+        scanner.nextLine();  // Limpiar el buffer
+
+        // Leer todos los pedidos
         boolean encontrado = false;
 
         // Modificar el estado de un pedido específico
-        for (Pedido pedido : pedidos) {
+        for (Pedido pedido : listaPedidos) {
             if (pedido.getIdPedido() == idPedido) {
+                System.out.println("El estado actual del pedido: " + idPedido + " es: " + pedido.getStatus());
+                System.out.println("Ingrese el nuevo estado del pedido: (seleccione un numero)");
+                System.out.println(ESTATUS_PEDIDOS);
+                String nuevoStatus = scanner.nextLine();
+                if(nuevoStatus == "1"){
+                    nuevoStatus = "en preparacion";
+                } else if(nuevoStatus == "2"){
+                    nuevoStatus = "pendiente";
+                } else if(nuevoStatus == "3") {
+                    nuevoStatus = "confirmado";
+                } else if (nuevoStatus == "4") {
+                    nuevoStatus = "en camino";
+                } else if(nuevoStatus == "5") {
+                    nuevoStatus = "enviado";
+                } else {
+                    nuevoStatus = pedido.getStatus();
+                    System.out.println("Ocurrio un error con el nuevo estatus, se mantiene el anterior");
+                }
+
                 pedido.setStatus(nuevoStatus);  // Cambia el estado del pedido
                 encontrado = true;
                 break;  // Sale del bucle cuando encuentra el pedido
@@ -73,10 +95,12 @@ public class FuncionesPedido {
 
         if (encontrado) {
             // Guardar los cambios en el archivo
-            guardarPedidos(pedidos);
+            guardarPedidos(listaPedidos);
             System.out.println("Estado del pedido actualizado correctamente.");
+            return listaPedidos;
         } else {
             System.out.println("Pedido no encontrado.");
+            return listaPedidos;
         }
     }
 

@@ -2,14 +2,45 @@ package service;
 
 import model.Pedido;
 import model.Repartidor;
-import java.util.List;
-import java.util.Scanner;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
+
+import static constants.Constantes.ARCHIVO_PEDIDOS;
+import static constants.Constantes.*;
+import static service.FuncionesArchivos.RUTA_BASE_ARCHIVOS;
 
 public class FuncionesRepartidor {
-    private static List<Repartidor> listaRepartidores; // Lista de repartidores disponibles
+
+    public static List<Repartidor> leerRepartidoresArchivo() {
+        List<Repartidor> repartidores = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(RUTA_BASE_ARCHIVOS + ARCHIVO_REPARTIDORES))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] datos = linea.split(";");
+                // Verifica que los datos estén bien formateados
+                Repartidor repartidor = new Repartidor(
+                        datos[0],                     // idRep
+                        0,                            // cantPedidos
+                        new ArrayList<Pedido>(),      // pedidos
+                        true                       // activo
+                );
+                repartidores.add(repartidor);
+            }
+        } catch (IOException | NumberFormatException e) {
+            e.printStackTrace();
+        }
+        finally {
+            return repartidores;
+        }
+    }
 
     // asignar un repartidor a un pedido
     public static void asignarRepartidor(Pedido pedido) {
+        List<Repartidor> listaRepartidores = leerRepartidoresArchivo();
         if (pedido == null) {
             System.out.println("Pedido no válido.");
             return;
@@ -41,6 +72,8 @@ public class FuncionesRepartidor {
 
     // ver todos los repartidores disponibles
     public static void verRepartidores() {
+        List<Repartidor> listaRepartidores = leerRepartidoresArchivo();
+
         if (listaRepartidores == null || listaRepartidores.isEmpty()) {
             System.out.println("No hay repartidores disponibles.");
             return;
@@ -52,17 +85,22 @@ public class FuncionesRepartidor {
     }
 
     // agregar un nuevo repartidor a la lista
-    public static void agregarRepartidor(Repartidor repartidor) {
+    public static List<Repartidor> agregarRepartidor(Repartidor repartidor) {
+        List<Repartidor> listaRepartidores = leerRepartidoresArchivo();
+
         if (repartidor == null) {
             System.out.println("Repartidor no válido.");
-            return;
+            return listaRepartidores;
         }
         listaRepartidores.add(repartidor);
         System.out.println("Repartidor " + repartidor.getIdRepartidor() + " agregado correctamente.");
+        return listaRepartidores;
     }
 
     // eliminar un repartidor de la lista
     public static void eliminarRepartidor(String idRepartidor) {
+        List<Repartidor> listaRepartidores = leerRepartidoresArchivo();
+
         if (listaRepartidores == null || listaRepartidores.isEmpty()) {
             System.out.println("No hay repartidores para eliminar.");
             return;

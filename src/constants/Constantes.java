@@ -23,6 +23,8 @@ public class Constantes {
     public static final String ARCHIVO_CARTA = "carta_comidas.txt";
 
     // COMIDAS
+    public static final String ARCHIVO_COMIDAS = "carta_comidas.txt";
+
     public static final int ATRIBUTOS_COMIDA = 5;
     public static final int ATRIBUTOS_PIZZA = ATRIBUTOS_COMIDA + 3;
     public static final int ATRIBUTOS_POSTRE = ATRIBUTOS_COMIDA + 2;
@@ -30,8 +32,16 @@ public class Constantes {
     public static final int ATRIBUTOS_PASTA = ATRIBUTOS_COMIDA + 2;
     public static final int ATRIBUTOS_MILANESA = ATRIBUTOS_COMIDA + 1;
 
-    //PEDIDO
+    // PEDIDO
     public static final String ARCHIVO_PEDIDOS = "pedidos.txt";
+    public static final String ESTATUS_PEDIDOS = "\n1- EN PREPARACION\n2- PENDIENTE\n3- CONFIRMADO\n4- EN CAMINO\n5- ENVIADO";
+
+    // REPARTIDORES
+    public static final String ARCHIVO_REPARTIDORES = "repartidores.txt";
+
+    // Clientes
+    public static final String ARCHIVO_CLIENTES = "clientes.txt";
+
 
 
 }

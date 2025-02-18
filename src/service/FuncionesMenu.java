@@ -7,8 +7,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 import static constants.Constantes.*;
-import static service.FuncionesArchivos.escribirArchivoMenu;
-import static service.FuncionesArchivos.leerArchivoCarta;
+import static service.FuncionesArchivos.*;
 import static service.FuncionesComida.crearPlato;
 import static service.FuncionesComida.parseComida;
 
@@ -39,7 +38,7 @@ public class FuncionesMenu {
         return scanner.nextLine();
     }
 
-    private static void imprimirLineaSeparacion(int longitud, char simbolo){
+    static void imprimirLineaSeparacion(int longitud, char simbolo){
         for (int i = 0; i < longitud; i++) {
             System.out.print(simbolo);
             if (i==longitud-1){
@@ -50,8 +49,31 @@ public class FuncionesMenu {
 
     public static void mostrarMenuPrincipal() {
         boolean ejecutarMenu = true;
-
         Scanner scanner = new Scanner(System.in);
+
+        // Tomar datos de empleado
+        System.out.println("Ingrese su nombre: ");
+        String nombreEmpleado = pedirInput(scanner);
+        System.out.println("Ingrese su legajo de Empleado: ");
+        String legajoEmpleado = pedirInput(scanner);
+        Empleado empleado = new Empleado(nombreEmpleado, legajoEmpleado, 0);
+
+        List<Pedido> listaPedidos = new ArrayList<>();
+        // Leer pedidos de archivo
+        checkAndCreateFile(ARCHIVO_PEDIDOS, listaPedidos);
+
+        List<Repartidor> listaRepartidores = new ArrayList<>();
+        // Leer repartidores de archivo
+        checkAndCreateFile(ARCHIVO_REPARTIDORES, listaRepartidores);
+
+        List<Cliente> listaClientes = new ArrayList<>();
+        // Leer clientes de archivo
+        checkAndCreateFile(ARCHIVO_CLIENTES, listaClientes);
+
+        List<Comida> listaComidas = new ArrayList<>();
+        // Leer platos de archivo
+        checkAndCreateFile(ARCHIVO_CARTA, listaComidas);
+
 
         while(ejecutarMenu){
             // Menu Principal
@@ -62,19 +84,19 @@ public class FuncionesMenu {
             switch (opcion){
                 case 1:
                     imprimirOpciones(ID_SUBMENU_PEDIDOS);
-                    mostrarSubMenu(scanner, ID_SUBMENU_PEDIDOS);
+                    mostrarSubMenu(scanner, ID_SUBMENU_PEDIDOS, empleado, listaPedidos, listaRepartidores, listaClientes, listaComidas);
                     break;
                 case 2:
                     imprimirOpciones(ID_SUBMENU_REPARTIDORES);
-                    mostrarSubMenu(scanner, ID_SUBMENU_REPARTIDORES);
+                    mostrarSubMenu(scanner, ID_SUBMENU_REPARTIDORES, empleado, listaPedidos, listaRepartidores, listaClientes, listaComidas);
                     break;
                 case 3:
                     imprimirOpciones(ID_SUBMENU_COMIDAS);
-                    mostrarSubMenu(scanner, ID_SUBMENU_COMIDAS);
+                    mostrarSubMenu(scanner, ID_SUBMENU_COMIDAS, empleado, listaPedidos, listaRepartidores, listaClientes, listaComidas);
                     break;
                 case 4:
                     imprimirOpciones(ID_SUBMENU_REPORTES);
-                    mostrarSubMenu(scanner, ID_SUBMENU_REPORTES);
+                    mostrarSubMenu(scanner, ID_SUBMENU_REPORTES, empleado, listaPedidos, listaRepartidores, listaClientes, listaComidas);
                     break;
                 case 0:
                     System.out.println("Saliendo...");
@@ -88,7 +110,9 @@ public class FuncionesMenu {
         scanner.close();
     }
 
-    private static void mostrarSubMenu(Scanner scanner, String submenu) {
+    private static void mostrarSubMenu(Scanner scanner, String submenu, Empleado empleado,
+                                       List<Pedido> listaPedidos, List<Repartidor> listaRepartidores,
+                                       List<Cliente> listaClientes, List<Comida> listaComidas) {
         boolean volverAMenuPrincipal = false;
 
         while(!volverAMenuPrincipal){
@@ -101,15 +125,13 @@ public class FuncionesMenu {
                         case 1:
                             // verPedidos
                             FuncionesPedido.mostrarPedidos();  // Llamada a la función para mostrar pedidos
+                            volverAMenuPrincipal = true;
                             break;
                         case 2:
                             // Cambiar estado de pedido
-                            System.out.println("Ingrese el ID del pedido:");
-                            int idPedido = scanner.nextInt();
-                            scanner.nextLine();  // Limpiar el buffer
-                            System.out.println("Ingrese el nuevo estado del pedido:");
-                            String nuevoStatus = scanner.nextLine();
-                            FuncionesPedido.cambiarEstadoPedido(idPedido, nuevoStatus);  // Llamada a la función para cambiar el estado
+                            listaPedidos = FuncionesPedido.cambiarEstadoPedido(scanner, listaPedidos);  // Llamada a la función para cambiar el estado
+                            volverAMenuPrincipal = true;
+
                             break;
                         case 3:
                             // Ver cliente por pedido
@@ -117,6 +139,8 @@ public class FuncionesMenu {
                             int idClientePedido = scanner.nextInt();
                             scanner.nextLine();  // Limpiar el buffer
                             FuncionesPedido.verClientePorPedido(idClientePedido);  // Llamada a la función para ver el cliente por pedido
+                            volverAMenuPrincipal = true;
+
                             break;
                         case 0:
                             volverAMenuPrincipal = true;
@@ -146,6 +170,8 @@ public class FuncionesMenu {
                                 System.out.println("Entrada inválida. Debe ingresar un número.");
                                 scanner.nextLine();
                             }
+                            volverAMenuPrincipal = true;
+
                             break;
 
                         case 2:
@@ -158,12 +184,16 @@ public class FuncionesMenu {
                             String idRepartidor = scanner.nextLine();
                             Repartidor nuevoRepartidor = new Repartidor(idRepartidor, 0, new java.util.ArrayList<>(), true);
                             FuncionesRepartidor.agregarRepartidor(nuevoRepartidor);
+                            volverAMenuPrincipal = true;
+
                             break;
                         case 4:
                             // Eliminar repartidor
                             System.out.print("Ingrese el ID del repartidor a eliminar: ");
                             String idEliminar = scanner.nextLine();
                             FuncionesRepartidor.eliminarRepartidor(idEliminar);
+                            volverAMenuPrincipal = true;
+
                             break;
                         case 0:
                             volverAMenuPrincipal = true;
@@ -185,6 +215,8 @@ public class FuncionesMenu {
                                 System.out.println(cartaComidas.get(i).toString());
                                 imprimirLineaSeparacion(165, '*');
                             }
+                            volverAMenuPrincipal = true;
+
                             break;
                         case 2:
                             // Crear nuevo plato
@@ -212,6 +244,7 @@ public class FuncionesMenu {
                     switch(opcionSubmenu){
                         case 1:
                             // Generar reporte Diario
+                            volverAMenuPrincipal = true;
                             break;
                         case 0:
                             volverAMenuPrincipal = true;
