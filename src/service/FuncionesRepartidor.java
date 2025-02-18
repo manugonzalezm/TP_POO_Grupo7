@@ -3,10 +3,7 @@ package service;
 import model.Pedido;
 import model.Repartidor;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 import static constants.Constantes.ARCHIVO_PEDIDOS;
@@ -94,6 +91,7 @@ public class FuncionesRepartidor {
         }
         listaRepartidores.add(repartidor);
         System.out.println("Repartidor " + repartidor.getIdRepartidor() + " agregado correctamente.");
+        guardarRepartidor(listaRepartidores);
         return listaRepartidores;
     }
 
@@ -114,5 +112,16 @@ public class FuncionesRepartidor {
             }
         }
         System.out.println("Repartidor no encontrado.");
+    }
+    private static void guardarRepartidor(List<Repartidor> listaRepartidores) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(RUTA_BASE_ARCHIVOS + ARCHIVO_REPARTIDORES))) {
+            for (Repartidor repartidor : listaRepartidores) {
+                bw.write(repartidor.toString());  // Escribe cada pedido
+                bw.newLine();  // Añade una nueva línea
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error al guardar los pedidos.");
+        }
     }
 }

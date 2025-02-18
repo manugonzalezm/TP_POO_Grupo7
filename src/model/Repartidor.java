@@ -1,5 +1,6 @@
 package model;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class Repartidor {
@@ -43,5 +44,8 @@ public class Repartidor {
     }
     public void setActivo(boolean activo) {
         this.activo = activo;
+    }
+    public String toString() {
+        return (idRepartidor + ";" + cantPedidos + ";" + pedidos + ";" + activo);
     }
 }
