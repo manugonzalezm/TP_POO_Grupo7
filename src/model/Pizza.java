@@ -38,7 +38,7 @@ public class Pizza extends Comida {
 
     // toString
     public String toString() {
-        return super.toString() + "Queso: " + queso + "\t\tEstilo: " + estilo +  "\t\tSinTacc: " + sinTacc;
+        return super.toString() + "\t\tQueso: " + queso + "\t\tEstilo: " + estilo +  "\t\tSinTacc: " + sinTacc;
 
     }
 }

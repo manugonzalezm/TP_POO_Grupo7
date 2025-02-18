@@ -23,6 +23,6 @@ public class Milanesa extends Comida{
 
     // toString
     public String toString() {
-        return super.toString() + "\t\tTamanios: " + tamanios;
+        return super.toString() + "\t\tTamaños: " + tamanios;
     }
 }

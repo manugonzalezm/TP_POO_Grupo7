@@ -57,7 +57,7 @@ public class Hamburguesa extends Comida{
     //toString
     public String toString() {
 
-        return super.toString() + "CantPatys: " + cantPatys + "\t\tVeggie: " + veggie + "\t\tTipoPan: " + tipoPan + "\t\tSalsa: " + salsa + "\nCondimentos: " + condimentos;
+        return super.toString() + "\t\tCantPatys: " + cantPatys + "\t\tVeggie: " + veggie + "\t\tTipoPan: " + tipoPan + "\t\tSalsa: " + salsa + "\nCondimentos: " + condimentos;
 
     }
 }
