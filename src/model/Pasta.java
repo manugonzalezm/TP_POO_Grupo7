@@ -5,8 +5,8 @@ public class Pasta extends Comida{
     public boolean casero;
 
     // Constructor de la clase
-    public Pasta(String nombre, double precio, boolean disponible, String descripcion, String tipo, String salsa, boolean casero) {
-        super(nombre, precio, disponible, descripcion, tipo);
+    public Pasta(int id, String nombre, double precio, boolean disponible, String descripcion, String tipo, String salsa, boolean casero) {
+        super(id,nombre, precio, disponible, descripcion, tipo);
         this.salsa = salsa;
         this.casero = casero;
     }

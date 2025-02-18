@@ -2,7 +2,7 @@ package model;/* Esta clase es abstracta */
 
 public abstract class Comida {
     /* Agregamos los atributos */
-
+    public int id;
     public String nombre;
     public double precio;
     public boolean disponible;
@@ -10,7 +10,8 @@ public abstract class Comida {
     public String tipo;
 
     // Constructor de la clase abstracta que será invocado por sus clases hijas
-    public Comida(String nombre, double precio, boolean disponible, String descripcion, String tipo) {
+    public Comida(int id, String nombre, double precio, boolean disponible, String descripcion, String tipo) {
+        this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.disponible = disponible;
@@ -19,6 +20,8 @@ public abstract class Comida {
     }
 
     /* Estos son los metodos getters */
+
+    public int getId() { return id; }
     public String getNombre() {
         return nombre;
     }
@@ -36,6 +39,9 @@ public abstract class Comida {
     }
 
     /* Estos son los metodos setters */
+    public void setId(int id) {
+        this.id = id;
+    }
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -54,7 +60,8 @@ public abstract class Comida {
 
     // toString
     public String toString() {
-        return "Nombre: " + nombre + "\t\tPrecio: $" + precio + "\t\tDisponible: " + disponible + "\t\tDescripcion: " + descripcion + "\nTipo: " + tipo;
+        return "ID: " + id + "Nombre: " + nombre + "\t\tPrecio: $" + precio + "\t\tDisponible: " +
+                disponible + "\t\tDescripcion: " + descripcion + "\nTipo: " + tipo;
 
     }
 }

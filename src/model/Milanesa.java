@@ -6,8 +6,8 @@ public class Milanesa extends Comida{
     public List<String> tamanios;
 
     // Constructor de la clase
-    public Milanesa(String nombre, double precio, boolean disponible, String descripcion, String tipo, List<String> tamanios) {
-        super(nombre, precio, disponible, descripcion, tipo);
+    public Milanesa(int id, String nombre, double precio, boolean disponible, String descripcion, String tipo, List<String> tamanios) {
+        super(id, nombre, precio, disponible, descripcion, tipo);
         this.tamanios = tamanios;
     }
 
