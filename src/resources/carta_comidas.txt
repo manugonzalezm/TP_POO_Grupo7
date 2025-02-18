@@ -1,1 +1,2 @@
-nombre plato;500.00;true;descripcion;postre;true;true
+Helado de DDL;5000.00;true;Helado de Dulce de Leche en copa;postre;true;false
+Milanesa Napolitana con papas fritas;15000.00;true;Milanesa de ternera napolitana con guarnicion;milanesa;individual,para compartir
