@@ -2,3 +2,4 @@
 1001;Milanesa Napolitana con papas fritas;15000.00;true;Milanesa de ternera napolitana con guarnicion;milanesa;individual,para compartir
 9983;canelones;14000;true;Canelones de JyQ;pasta;fileto;false
 7731;Guiso;10000;false;Guiso de fideos;pasta;estofado;false
+6987;0;0;false;0;0

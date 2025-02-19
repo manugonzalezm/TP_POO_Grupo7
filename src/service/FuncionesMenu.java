@@ -189,9 +189,9 @@ public class FuncionesMenu {
                             break;
                         case 4:
                             // Eliminar repartidor
-                            System.out.print("Ingrese el ID del repartidor a eliminar: ");
-                            String idEliminar = scanner.nextLine();
-                            FuncionesRepartidor.eliminarRepartidor(idEliminar);
+                            System.out.print("Ingrese el ID del repartidor a deshabilitar: ");
+                            String idDeshabilitar = scanner.nextLine();
+                            FuncionesRepartidor.deshabilitarRepartidor(idDeshabilitar);
                             volverAMenuPrincipal = true;
 
                             break;
