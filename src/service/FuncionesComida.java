@@ -179,7 +179,7 @@ public class FuncionesComida {
             return listaComidas;
         }
     }
-     */
+
 
     // Guardar los platos en el archivo después de cualquier modificación
     private static void guardarPlatos(List<Comida> platos) {
@@ -193,6 +193,6 @@ public class FuncionesComida {
             System.out.println("Error al guardar los platos.");
         }
     }
-
+    */
 
 }

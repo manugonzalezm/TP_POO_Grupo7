@@ -52,6 +52,7 @@ public class FuncionesArchivos {
         }
     }
 
+    /*
     public void modificarArchivoMenu(String param, String nuevoValor, Scanner scanner) {
         List<String> lineas = new ArrayList<>();
 
@@ -68,7 +69,7 @@ public class FuncionesArchivos {
                     // Si no, agregamos la línea tal cual
                     lineas.add(linea);
                 }
-            } */
+            }
 
         if (param == "precio"){
 
@@ -76,6 +77,7 @@ public class FuncionesArchivos {
 
         }
     }
+    */
 
     public static void crearArchivo(String nombreArchivo) {
         // Ruta del archivo que queremos crear

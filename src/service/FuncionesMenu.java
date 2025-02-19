@@ -13,6 +13,7 @@ import static service.FuncionesRepartidor.verRepartidores;
 
 public class FuncionesMenu {
     private static void imprimirOpciones(String menu) {
+        // Funcion que imprime el menu principal
         switch (menu){
             case ID_MENU_PRINCIPAL:
                 System.out.println(OPCIONES_MENU_PRINCIPAL);
@@ -40,6 +41,7 @@ public class FuncionesMenu {
         return scanner.nextLine();
     }
 
+    // Funcion para dar formato grafico
     static void imprimirLineaSeparacion(int longitud, char simbolo){
         for (int i = 0; i < longitud; i++) {
             System.out.print(simbolo);
