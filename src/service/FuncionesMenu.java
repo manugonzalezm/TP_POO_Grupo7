@@ -134,7 +134,7 @@ public class FuncionesMenu {
                 case "pedidos":
                     switch(opcionSubmenu){
                         case 1:
-                            // verPedidos
+                            // Funcionalidad para ver la lista de pedidos existentes
                             FuncionesPedido.mostrarPedidos();  // Llamada a la función para mostrar pedidos
                             opcionSubmenu = 0;
                             volverAMenuPrincipal = true;

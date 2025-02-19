@@ -182,11 +182,7 @@ public class FuncionesPedido {
         }
     }
 
-    private static List<Pedido> listaPedidos;
-
-    public static List<Pedido> getListaPedidos() {
-        return listaPedidos;
-    }
+    // Funcion que permite buscar un pedido por su ID
     public static Pedido buscarPedidoPorId(int idPedido, List<Pedido> listaPedidos) {
         for (Pedido pedido : listaPedidos) {
             if (pedido.getIdPedido() == idPedido) {

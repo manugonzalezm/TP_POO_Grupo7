@@ -21,9 +21,9 @@ public class FuncionesRepartidor {
                 String[] datos = linea.split(";");
                 Repartidor repartidor = new Repartidor(
                         datos[0],                     // idRep
-                        Integer.parseInt(datos[1]),                            // cantPedidos
+                        Integer.parseInt(datos[1]),   // cantPedidos
                         new ArrayList<Pedido>(),      // pedidos
-                        Boolean.parseBoolean(datos[3])                       // activo
+                        Boolean.parseBoolean(datos[3]) // activo
                 );
                 repartidores.add(repartidor);
             }
@@ -69,7 +69,7 @@ public class FuncionesRepartidor {
     }
      */
 
-    // ver todos los repartidores disponibles
+    // Funcion que permite ver con un formato de consola los repartidores que existen en el archivo
     public static void verRepartidores() {
         List<Repartidor> listaRepartidores = leerRepartidoresArchivo();
 
@@ -83,7 +83,7 @@ public class FuncionesRepartidor {
         }
     }
 
-    // agregar un nuevo repartidor a la lista
+    // Funcion que permite agregar un repartidor a la lista y devuelve la lista actualizada como valor de retorno
     public static List<Repartidor> agregarRepartidor(Repartidor repartidor) {
         List<Repartidor> listaRepartidores = leerRepartidoresArchivo();
 
@@ -97,6 +97,7 @@ public class FuncionesRepartidor {
         return listaRepartidores;
     }
 
+    // Permite pasar a inactivo un Repartidor (BAJA por logica true/false)
     public static void deshabilitarRepartidor(String idRepartidor) {
         List<String> lineasActualizadas = new ArrayList<>();
 
@@ -136,6 +137,7 @@ public class FuncionesRepartidor {
         }
     }
 
+    // Permite guardar el archivo de repartidores
     private static void guardarRepartidor(List<Repartidor> listaRepartidores) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(RUTA_BASE_ARCHIVOS + ARCHIVO_REPARTIDORES))) {
             for (Repartidor repartidor : listaRepartidores) {
