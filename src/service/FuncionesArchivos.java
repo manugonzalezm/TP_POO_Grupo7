@@ -92,14 +92,12 @@ public class FuncionesArchivos {
         }
     }
 
-    public static List checkAndCreateFile(String nombreArchivo, List listaALlenar) {
+    public static void checkAndCreateFile(String nombreArchivo) {
         if (existeArchivo(RUTA_BASE_ARCHIVOS + nombreArchivo)) {
             System.out.println("El archivo" + nombreArchivo + "ya existe");
-            return listaALlenar;
         } else {
             crearArchivo(nombreArchivo);
             System.out.println("Se creó el archivo" + nombreArchivo + " porque no existia");
-            return listaALlenar;
         }
     }
 

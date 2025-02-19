@@ -31,5 +31,9 @@ public class Postre extends Comida {
     // toString
     public String toString() {
         return super.toString() + "\t\tSinTacc: " + sinTacc + "\t\tPara Compartir: " + paraCompartir;
-        }
+    }
+
+    public String toStringArchivo() {
+        return super.toStringArchivoComida() + sinTacc + ";" + paraCompartir;
+    }
 }

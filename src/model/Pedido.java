@@ -122,4 +122,25 @@ public class Pedido {
                 contenidoStr, propina, importe, medioPago, status, repAsignado, idCliente
         );
     }
+
+    private String toStringContenido() {
+        String contenidoString = "";
+        for (int i = 0; i < contenido.size(); i++) {
+            
+            contenidoString = contenidoString + contenido.get(i).toString() + "\n";
+        }
+
+        return contenidoString;
+    }
+
+    public String toStringArchivo() {
+        String horaPedidoTimestamp = String.valueOf(horaPedido);
+        String horaEstimadaTimestamp = String.valueOf(horaEstimada);
+        String contenidoString = "";
+
+
+        return idPedido + ";" + direccion + ";" + comentario + ";" + horaPedidoTimestamp + ";" + horaEstimadaTimestamp + ";" +
+                contenido + ";" +  propina + ";" +  importe + ";" +  medioPago + ";" +  status + ";" +
+                repAsignado + ";" +  idCliente;
+    }
 }

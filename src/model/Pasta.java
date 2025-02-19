@@ -31,4 +31,8 @@ public class Pasta extends Comida{
     public String toString() {
         return super.toString() + "\t\tSalsa: " + salsa + "\t\tCasero: " + casero;
     }
+
+    public String toStringArchivo() {
+        return super.toStringArchivoComida() + salsa + ";" + casero;
+    }
 }

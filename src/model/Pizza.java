@@ -39,7 +39,10 @@ public class Pizza extends Comida {
     // toString
     public String toString() {
         return super.toString() + "\t\tQueso: " + queso + "\t\tEstilo: " + estilo +  "\t\tSinTacc: " + sinTacc;
+    }
 
+    public String toStringArchivo() {
+        return super.toStringArchivoComida() + queso + ";" + estilo + ";" + sinTacc;
     }
 }
 
