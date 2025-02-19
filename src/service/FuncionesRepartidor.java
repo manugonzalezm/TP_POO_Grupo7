@@ -18,7 +18,6 @@ public class FuncionesRepartidor {
             String linea;
             while ((linea = br.readLine()) != null) {
                 String[] datos = linea.split(";");
-                // Verifica que los datos estén bien formateados
                 Repartidor repartidor = new Repartidor(
                         datos[0],                     // idRep
                         0,                            // cantPedidos
@@ -95,7 +94,7 @@ public class FuncionesRepartidor {
         return listaRepartidores;
     }
 
-    // eliminar un repartidor de la lista
+    /* eliminar un repartidor de la lista
     public static void eliminarRepartidor(String idRepartidor) {
         List<Repartidor> listaRepartidores = leerRepartidoresArchivo();
 
@@ -108,16 +107,57 @@ public class FuncionesRepartidor {
             if (r.getIdRepartidor().equals(idRepartidor)) {
                 listaRepartidores.remove(r);
                 System.out.println("Repartidor " + r.getIdRepartidor() + " eliminado correctamente.");
+
                 return;
             }
         }
         System.out.println("Repartidor no encontrado.");
+    }*/
+
+    public static void deshabilitarRepartidor(String idRepartidor) {
+        List<String> lineasActualizadas = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(RUTA_BASE_ARCHIVOS + ARCHIVO_REPARTIDORES))) {
+            String linea;
+            boolean encontrado = false;
+            while ((linea = br.readLine()) != null) {
+                String[] datos = linea.split(";");
+                if (datos[0].equals(idRepartidor) && datos[3].equals("true")) {
+                    datos[3] = "false";  // se dehabilita al repartidor
+                    encontrado = true;
+                }
+                lineasActualizadas.add(String.join(";", datos));
+            }
+
+            if (encontrado) {
+                System.out.println("Repartidor " + idRepartidor + " deshabilitado correctamente.");
+            } else {
+                System.out.println("Repartidor no encontrado o ya está deshabilitado.");
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo.");
+            e.printStackTrace();
+            return;
+        }
+
+        // se sobrescribe el archivo con los cambios en el estado de activo del repartidor
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(RUTA_BASE_ARCHIVOS + ARCHIVO_REPARTIDORES))) {
+            for (String linea : lineasActualizadas) {
+                bw.write(linea);
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Error al escribir en el archivo.");
+            e.printStackTrace();
+        }
     }
+
     private static void guardarRepartidor(List<Repartidor> listaRepartidores) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(RUTA_BASE_ARCHIVOS + ARCHIVO_REPARTIDORES))) {
             for (Repartidor repartidor : listaRepartidores) {
-                bw.write(repartidor.toString());  // Escribe cada pedido
-                bw.newLine();  // Añade una nueva línea
+                bw.write(repartidor.toString());  // escribe cada pedido
+                bw.newLine();  // añade una nueva línea
             }
         } catch (IOException e) {
             e.printStackTrace();
