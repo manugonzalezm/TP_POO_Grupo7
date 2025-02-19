@@ -9,6 +9,7 @@ import java.util.*;
 import static constants.Constantes.ARCHIVO_PEDIDOS;
 import static constants.Constantes.*;
 import static service.FuncionesArchivos.RUTA_BASE_ARCHIVOS;
+import static service.FuncionesPedido.guardarPedidos;
 
 public class FuncionesRepartidor {
 
@@ -20,30 +21,29 @@ public class FuncionesRepartidor {
                 String[] datos = linea.split(";");
                 Repartidor repartidor = new Repartidor(
                         datos[0],                     // idRep
-                        0,                            // cantPedidos
+                        Integer.parseInt(datos[1]),                            // cantPedidos
                         new ArrayList<Pedido>(),      // pedidos
-                        true                       // activo
+                        Boolean.parseBoolean(datos[3])                       // activo
                 );
                 repartidores.add(repartidor);
             }
         } catch (IOException | NumberFormatException e) {
             e.printStackTrace();
         }
-        finally {
-            return repartidores;
-        }
+        return repartidores;
     }
 
+    /*
     // asignar un repartidor a un pedido
-    public static void asignarRepartidor(Pedido pedido) {
+    public static List<Pedido> asignarRepartidor(Pedido pedido, List<Pedido> listaPedidos) {
         List<Repartidor> listaRepartidores = leerRepartidoresArchivo();
         if (pedido == null) {
             System.out.println("Pedido no válido.");
-            return;
+            return listaPedidos;
         }
         if (listaRepartidores == null || listaRepartidores.isEmpty()) {
             System.out.println("No hay repartidores disponibles.");
-            return;
+            return listaPedidos;
         }
 
         Scanner scanner = new Scanner(System.in);
@@ -57,14 +57,17 @@ public class FuncionesRepartidor {
 
         for (Repartidor r : listaRepartidores) {
             if (r.getIdRepartidor().equals(idRepartidor) && r.getActivo()) {
-                r.getPedidos().add(pedido);
+                listaPedidos.add(pedido);
                 r.setCantPedidos(r.getCantPedidos() + 1);
-                System.out.println("Repartidor " + r.getIdRepartidor() + " asignado al pedido " + pedido.getRepAsignado());
-                return;
+                guardarPedidos(listaPedidos);
+                System.out.println("Repartidor " + r.getIdRepartidor() + " asignado al pedido " + pedido.getIdPedido());
+                return listaPedidos;
             }
         }
         System.out.println("Repartidor no encontrado o inactivo.");
+        return listaPedidos;
     }
+     */
 
     // ver todos los repartidores disponibles
     public static void verRepartidores() {
@@ -93,26 +96,6 @@ public class FuncionesRepartidor {
         guardarRepartidor(listaRepartidores);
         return listaRepartidores;
     }
-
-    /* eliminar un repartidor de la lista
-    public static void eliminarRepartidor(String idRepartidor) {
-        List<Repartidor> listaRepartidores = leerRepartidoresArchivo();
-
-        if (listaRepartidores == null || listaRepartidores.isEmpty()) {
-            System.out.println("No hay repartidores para eliminar.");
-            return;
-        }
-
-        for (Repartidor r : listaRepartidores) {
-            if (r.getIdRepartidor().equals(idRepartidor)) {
-                listaRepartidores.remove(r);
-                System.out.println("Repartidor " + r.getIdRepartidor() + " eliminado correctamente.");
-
-                return;
-            }
-        }
-        System.out.println("Repartidor no encontrado.");
-    }*/
 
     public static void deshabilitarRepartidor(String idRepartidor) {
         List<String> lineasActualizadas = new ArrayList<>();

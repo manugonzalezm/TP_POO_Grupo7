@@ -26,7 +26,9 @@ public class Milanesa extends Comida{
         return super.toString() + "\t\tTamaños: " + tamanios;
     }
 
+    @Override
     public String toStringArchivo() {
-        return super.toStringArchivoComida() + String.join(";", tamanios);
+        String argumentos = String.join(";", tamanios);
+        return super.toStringArchivoComida(argumentos);
     }
 }

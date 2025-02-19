@@ -94,7 +94,7 @@ public class FuncionesArchivos {
 
     public static void checkAndCreateFile(String nombreArchivo) {
         if (existeArchivo(RUTA_BASE_ARCHIVOS + nombreArchivo)) {
-            System.out.println("El archivo" + nombreArchivo + "ya existe");
+            // System.out.println("El archivo" + nombreArchivo + "ya existe");
         } else {
             crearArchivo(nombreArchivo);
             System.out.println("Se creó el archivo" + nombreArchivo + " porque no existia");

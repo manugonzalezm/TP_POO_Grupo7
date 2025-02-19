@@ -113,7 +113,7 @@ public class Pedido {
     @Override
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  // Formato para las fechas
-        String contenidoStr = String.join(",", contenido);  // Convierte la lista de contenido a un string separado por comas
+        String contenidoStr = String.join("\t\t", contenido);  // Convierte la lista de contenido a un string separado por comas
 
         return String.format(
                 "IdPedido: %d\tDireccion: %s\nComentario: %s\nHoraPedido: %s\tHoraEstimada: %s\nContenido: %s\nPropina: $%.2f\nImporte: $%.2f\nMedioPago: %s\nStatus: %s\nRepAsignado: %s\nIdCliente: %s",
@@ -123,23 +123,20 @@ public class Pedido {
         );
     }
 
-    private String toStringContenido() {
+    /* private String toStringContenido() {
         String contenidoString = "";
         for (int i = 0; i < contenido.size(); i++) {
-            
-            contenidoString = contenidoString + contenido.get(i).toString() + "\n";
+            Object item = contenido.get(i);
+            contenidoString = contenidoString +  + ";";
         }
-
         return contenidoString;
-    }
+    } */
 
     public String toStringArchivo() {
         String horaPedidoTimestamp = String.valueOf(horaPedido);
         String horaEstimadaTimestamp = String.valueOf(horaEstimada);
-        String contenidoString = "";
 
-
-        return idPedido + ";" + direccion + ";" + comentario + ";" + horaPedidoTimestamp + ";" + horaEstimadaTimestamp + ";" +
+        return idPedido + ";" + direccion + ";" + comentario + ";" + horaPedido + ";" + horaEstimada + ";" +
                 contenido + ";" +  propina + ";" +  importe + ";" +  medioPago + ";" +  status + ";" +
                 repAsignado + ";" +  idCliente;
     }

@@ -56,13 +56,12 @@ public class Hamburguesa extends Comida{
 
     //toString
     public String toString() {
-
         return super.toString() + "\t\tCantPatys: " + cantPatys + "\t\tVeggie: " + veggie + "\t\tTipoPan: " + tipoPan + "\t\tSalsa: " + salsa + "\nCondimentos: " + condimentos;
-
     }
 
+    @Override
     public String toStringArchivo() {
-        return super.toStringArchivoComida() + cantPatys + ";" + veggie + ";" +
-                tipoPan  + ";" + salsa  + ";" + String.join(";", condimentos);
+        String argumentos = cantPatys + ";" + veggie + ";" + tipoPan  + ";" + salsa  + ";" + String.join(";", condimentos);
+        return super.toStringArchivoComida(argumentos);
     }
 }

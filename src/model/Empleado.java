@@ -36,6 +36,7 @@ public class Empleado {
         this.cantPedidos = cantPedidos;
     }
 
+    /*
     //Metodos a ejecutar por el empleado que gestiona el sistema
 
     //
@@ -97,5 +98,6 @@ public class Empleado {
     private List<Repartidor> verRepartidores() {
         return null; // return temporario hasta tener logica de codigo
     }
+     */
 
 }

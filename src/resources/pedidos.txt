@@ -1,5 +1,5 @@
-1;Av. Siempre Viva 742;Sin comentarios;1708300000000;1708303600000;Pizza,Hamburguesa;10.5;25.0;Efectivo;Pendiente;Repartidor1;12345
-2;Av Independencia 148;Sin comentarios;1708300000000;1708303600000;Pizza;10.5;25.0;Efectivo;Entregado;Repartidor2;67890
-3;Calle Falsa 123;Pedido urgente;1708310000000;1708313600000;Pasta;15.0;40.0;Tarjeta;Pendiente;Repartidor3;11223
-4;Calle Nueva 456;Sin comentarios;1708312000000;1708315600000;Hamburguesa,Ensalada;8.0;30.0;Efectivo;Pendiente;Repartidor4;44556
-5;Av. Los Olivos 789;Sin comentarios;1708314000000;1708317600000;Pizza;12.0;35.0;Tarjeta;Entregado;Repartidor5;78901
+1;Av. Siempre Viva 742;Sin comentarios;Sun Feb 18 20:46:40 GMT-03:00 2024;Sun Feb 18 21:46:40 GMT-03:00 2024;[[1/Milanesa Napolitana con papas fritas],  [3/canelones]];10.5;25.0;Efectivo;confirmado;Repartidor1;12345
+2;Av Independencia 148;Sin comentarios;Sun Feb 18 20:46:40 GMT-03:00 2024;Sun Feb 18 21:46:40 GMT-03:00 2024;[[2/Milanesa Napolitana con papas fritas]];10.5;25.0;Efectivo;enviado;Repartidor2;67890
+3;Calle Falsa 123;Pedido urgente;Sun Feb 18 23:33:20 GMT-03:00 2024;Mon Feb 19 00:33:20 GMT-03:00 2024;[[2/guiso]];15.0;40.0;Tarjeta;pendiente;Repartidor3;11223
+4;Calle Nueva 456;Sin comentarios;Mon Feb 19 00:06:40 GMT-03:00 2024;Mon Feb 19 01:06:40 GMT-03:00 2024;[[1/Milanesa Napolitana con papas fritas],  [3/milanesa de soja]];8.0;30.0;Efectivo;pendiente;Repartidor4;44556
+5;Av. Los Olivos 789;Sin comentarios;Mon Feb 19 00:40:00 GMT-03:00 2024;Mon Feb 19 01:40:00 GMT-03:00 2024;[[2/Helado de DDL]];12.0;35.0;Tarjeta;enviado;Repartidor5;78901

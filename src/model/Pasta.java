@@ -32,7 +32,9 @@ public class Pasta extends Comida{
         return super.toString() + "\t\tSalsa: " + salsa + "\t\tCasero: " + casero;
     }
 
+    @Override
     public String toStringArchivo() {
-        return super.toStringArchivoComida() + salsa + ";" + casero;
+        String argumentos = salsa + ";" + casero;
+        return super.toStringArchivoComida(argumentos);
     }
 }

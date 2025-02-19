@@ -33,7 +33,9 @@ public class Postre extends Comida {
         return super.toString() + "\t\tSinTacc: " + sinTacc + "\t\tPara Compartir: " + paraCompartir;
     }
 
+    @Override
     public String toStringArchivo() {
-        return super.toStringArchivoComida() + sinTacc + ";" + paraCompartir;
+        String argumentos = sinTacc + ";" + paraCompartir;
+        return super.toStringArchivoComida(argumentos);
     }
 }

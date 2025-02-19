@@ -65,7 +65,11 @@ public abstract class Comida {
 
     }
 
-    public String toStringArchivoComida() {
-        return (id + ";" + nombre + ";" + precio + ";" + disponible + ";" + descripcion + ";" + tipo);
+    public String toStringArchivo() {
+        return "";
+    }
+
+    public String toStringArchivoComida(String argumentos) {
+        return (id + ";" + nombre + ";" + precio + ";" + disponible + ";" + descripcion + ";" + tipo + ";" + argumentos);
     }
 }

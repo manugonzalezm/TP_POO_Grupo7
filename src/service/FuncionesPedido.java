@@ -2,6 +2,8 @@ package service;
 
 import model.*;
 import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import static constants.Constantes.ARCHIVO_PEDIDOS;
 import static constants.Constantes.ESTATUS_PEDIDOS;
@@ -11,24 +13,60 @@ public class FuncionesPedido {
 
     private static final String RUTA_BASE_ARCHIVOS = "src/resources/";
 
-    private static Pedido parsePedido(String atributos) {
+    private static Pedido parsePedido(String atributos) throws ParseException {
         String[] datos = atributos.split(";");
+        // Formato correspondiente al patrón de la fecha
+        SimpleDateFormat format = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
 
-        Pedido pedido = new Pedido(
-                Integer.parseInt(datos[0]),   // idPedido
-                datos[1],                     // direccion
-                datos[2],                     // comentario
-                new Date(Long.parseLong(datos[3])), // horaPedido (convertir timestamp a Date)
-                new Date(Long.parseLong(datos[4])), // horaEstimada
-                Arrays.asList(datos[5].split(",")), // contenido (suponiendo que es una lista separada por comas)
-                Double.parseDouble(datos[6]),  // propina
-                Double.parseDouble(datos[7]),  // importe
-                datos[8],                      // medioPago
-                datos[9],                      // status
-                datos[10],                     // repAsignado
-                datos[11]                      // idCliente
-        );
-        return pedido;
+        Pedido pedido = null;
+        try {
+            pedido = new Pedido(
+                    Integer.parseInt(datos[0]),   // idPedido
+                    datos[1],                     // direccion
+                    datos[2],                     // comentario
+                    format.parse(datos[3]),       // horaPedido (convertir timestamp a Date)
+                    format.parse(datos[4]),       // horaEstimada
+                    Arrays.asList(datos[5].split(",")), // contenido (suponiendo que es una lista separada por comas)
+                    Double.parseDouble(datos[6]),  // propina
+                    Double.parseDouble(datos[7]),  // importe
+                    datos[8],                      // medioPago
+                    datos[9],                      // status
+                    datos[10],                     // repAsignado
+                    datos[11]                      // idCliente
+            );
+        } catch (NumberFormatException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        return pedido; //PONER CONTENIDO COMO IDS DE COMIDA Y CANTIDADES
+
+        /*
+        // Crear un HashMap para almacenar los pares clave-valor
+        Map<String, Integer> mapa = new HashMap<>();
+
+        // Agregar elementos al mapa
+        mapa.put("Juan", 25);
+        mapa.put("María", 30);
+        mapa.put("Carlos", 22);
+
+        // Mostrar el mapa
+        System.out.println("Mapa de claves y valores: " + mapa);
+
+        // Acceder a un valor utilizando una clave
+        System.out.println("Edad de Juan: " + mapa.get("Juan"));
+
+        // Verificar si una clave está presente
+        if (mapa.containsKey("María")) {
+            System.out.println("María está en el mapa.");
+        }
+
+        // Iterar sobre los pares clave-valor
+        for (Map.Entry<String, Integer> entry : mapa.entrySet()) {
+            System.out.println("Clave: " + entry.getKey() + ", Valor: " + entry.getValue());
+        }
+        */
+        
     }
 
     // Lee los pedidos desde el archivo
@@ -41,6 +79,8 @@ public class FuncionesPedido {
             }
         } catch (IOException | NumberFormatException e) {
             e.printStackTrace();
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
         }
         System.out.println("Pedidos cargados: " + pedidos.size() + "\n");
         return pedidos;
@@ -130,7 +170,7 @@ public class FuncionesPedido {
     }
 
     // Guardar los pedidos en el archivo después de cualquier modificación
-    private static void guardarPedidos(List<Pedido> pedidos) {
+    public static void guardarPedidos(List<Pedido> pedidos) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(RUTA_BASE_ARCHIVOS + ARCHIVO_PEDIDOS))) {
             for (Pedido pedido : pedidos) {
                 bw.write(pedido.toStringArchivo());  // Escribe cada pedido
@@ -141,12 +181,13 @@ public class FuncionesPedido {
             System.out.println("Error al guardar los pedidos.");
         }
     }
+
     private static List<Pedido> listaPedidos;
 
     public static List<Pedido> getListaPedidos() {
         return listaPedidos;
     }
-    public static Pedido buscarPedidoPorId(int idPedido) {
+    public static Pedido buscarPedidoPorId(int idPedido, List<Pedido> listaPedidos) {
         for (Pedido pedido : listaPedidos) {
             if (pedido.getIdPedido() == idPedido) {
                 return pedido;
