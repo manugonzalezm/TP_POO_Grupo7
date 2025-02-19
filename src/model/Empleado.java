@@ -3,6 +3,10 @@ package model;
 import java.util.List;
 
 public class Empleado {
+    /* Clase que representa al Empleado que maneja el sistema a traves del menu de opciones
+       Se instancia cuando se le pide al empleado identificarse al inicio de la ejecucion del programa.
+    */
+
     private String nombre;
     private String legajo;
     private int cantPedidos;

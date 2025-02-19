@@ -1,6 +1,7 @@
 package model;
 
 public class Postre extends Comida {
+    // Clase hija de "Comida" que representa a las comidas de este tipo
     public boolean sinTacc;
     public boolean paraCompartir;
 
@@ -30,11 +31,13 @@ public class Postre extends Comida {
 
     // toString
     public String toString() {
+        // Devuelve un String formateado para mostrar por pantalla al usuario los atributos de un objeto
         return super.toString() + "\t\tSinTacc: " + sinTacc + "\t\tPara Compartir: " + paraCompartir;
     }
 
     @Override
     public String toStringArchivo() {
+        // Convierte a String parseado para guardar el archivo
         String argumentos = sinTacc + ";" + paraCompartir;
         return super.toStringArchivoComida(argumentos);
     }

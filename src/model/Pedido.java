@@ -112,6 +112,7 @@ public class Pedido {
     //toString
     @Override
     public String toString() {
+        // Devuelve un String formateado para mostrar por pantalla al usaurio los atributos de un objeto
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  // Formato para las fechas
         String contenidoStr = String.join("\t\t", contenido);  // Convierte la lista de contenido a un string separado por comas
 
@@ -133,8 +134,7 @@ public class Pedido {
     } */
 
     public String toStringArchivo() {
-        String horaPedidoTimestamp = String.valueOf(horaPedido);
-        String horaEstimadaTimestamp = String.valueOf(horaEstimada);
+        // Convierte a String parseado para guardar el archivo
 
         return idPedido + ";" + direccion + ";" + comentario + ";" + horaPedido + ";" + horaEstimada + ";" +
                 contenido + ";" +  propina + ";" +  importe + ";" +  medioPago + ";" +  status + ";" +

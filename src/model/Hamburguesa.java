@@ -3,6 +3,7 @@ package model;
 import java.util.List;
 
 public class Hamburguesa extends Comida{
+    // Clase hija de "Comida" que representa a las comidas de este tipo
     public int cantPatys;
     public boolean veggie;
     public String tipoPan;
@@ -55,12 +56,14 @@ public class Hamburguesa extends Comida{
     }
 
     //toString
+    // Devuelve un String formateado para mostrar por pantalla al usuario los atributos de un objeto
     public String toString() {
         return super.toString() + "\t\tCantPatys: " + cantPatys + "\t\tVeggie: " + veggie + "\t\tTipoPan: " + tipoPan + "\t\tSalsa: " + salsa + "\nCondimentos: " + condimentos;
     }
 
     @Override
     public String toStringArchivo() {
+        // Convierte a String parseado para guardar el archivo
         String argumentos = cantPatys + ";" + veggie + ";" + tipoPan  + ";" + salsa  + ";" + String.join(";", condimentos);
         return super.toStringArchivoComida(argumentos);
     }

@@ -16,6 +16,7 @@ public class FuncionesArchivos {
 
     static String RUTA_BASE_ARCHIVOS =  "src/resources/";
 
+    // Funcion que devuelve un booleano dependiendo de si el archivo pasado por parametro existe o no
     private static boolean existeArchivo(String rutaArchivo) {
         // Ruta del archivo a comprobar
         File archivo = new File(rutaArchivo);
@@ -27,8 +28,8 @@ public class FuncionesArchivos {
         }
     }
 
+    // Lee un archivo (pasado por parametro) de la carpeta src/resources
     public static void leerArchivo(String rutaArchivo) {
-
         try (BufferedReader br = new BufferedReader(new FileReader(RUTA_BASE_ARCHIVOS + rutaArchivo))) {
             String linea;
             while ((linea = br.readLine()) != null) {
@@ -39,8 +40,8 @@ public class FuncionesArchivos {
         }
     }
 
+    // Escribe el archivo donde estan todos los platos
     public static void escribirArchivoMenu(String nuevoPlato) {
-
             try (BufferedWriter bw = new BufferedWriter(new FileWriter(RUTA_BASE_ARCHIVOS + ARCHIVO_COMIDAS , true))) {
             // El segundo parámetro 'true' permite agregar al archivo en lugar de sobrescribir
             // Añadir una nueva línea al archivo
@@ -79,6 +80,7 @@ public class FuncionesArchivos {
     }
     */
 
+    // Crea un archivo en la carpeta src/resources y recibe como parametro el nombre del archivo
     public static void crearArchivo(String nombreArchivo) {
         // Ruta del archivo que queremos crear
         File archivo = new File(RUTA_BASE_ARCHIVOS + nombreArchivo);
@@ -94,6 +96,7 @@ public class FuncionesArchivos {
         }
     }
 
+    // Chequea si el archivo pasado como parametro existe y si no existe lo crea vacio
     public static void checkAndCreateFile(String nombreArchivo) {
         if (existeArchivo(RUTA_BASE_ARCHIVOS + nombreArchivo)) {
             // System.out.println("El archivo" + nombreArchivo + "ya existe");
@@ -103,6 +106,7 @@ public class FuncionesArchivos {
         }
     }
 
+    // Lee el archivo de carta de platos
     public static List leerArchivoCarta() {
         List cartaComidas = new ArrayList();
 

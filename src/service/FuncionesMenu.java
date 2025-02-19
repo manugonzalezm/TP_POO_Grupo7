@@ -37,6 +37,7 @@ public class FuncionesMenu {
         }
     }
 
+    // funcion simplificada para reutilizar y pedirInput por teclado
     public static String pedirInput(Scanner scanner){
         return scanner.nextLine();
     }
@@ -51,6 +52,7 @@ public class FuncionesMenu {
         }
     }
 
+    // Funcion que muestra y permite navegar el menu principal
     public static void mostrarMenuPrincipal() {
         boolean ejecutarMenu = true;
         Scanner scanner = new Scanner(System.in);
@@ -118,6 +120,7 @@ public class FuncionesMenu {
         scanner.close();
     }
 
+    // Funcion que imprime dinamicamente los submenues segun el numero ingresado por teclado y permite
     private static void mostrarSubMenu(Scanner scanner, String submenu, Empleado empleado,
                                        List<Pedido> listaPedidos, List<Repartidor> listaRepartidores,
                                        List<Cliente> listaClientes, List<Comida> listaComidas) {

@@ -1,6 +1,8 @@
 package model;/* Esta clase es abstracta */
 
 public abstract class Comida {
+    // Clase abstracta de comidas que hereda a las clases hijas (por tipo de comidas)
+
     /* Agregamos los atributos */
     public int id;
     public String nombre;
@@ -59,6 +61,7 @@ public abstract class Comida {
     }
 
     // toString
+    // Devuelve un String formateado para mostrar por pantalla al usuario los atributos de un objeto
     public String toString() {
         return "ID: " + id + "\t\tNombre: " + nombre + "\t\tPrecio: $" + precio + "\t\tDisponible: " +
                 disponible + "\nDescripcion: " + descripcion + "\nTipo: " + tipo;
@@ -66,10 +69,14 @@ public abstract class Comida {
     }
 
     public String toStringArchivo() {
+        // Se inicializa vacio para poder hacer un override en clases hijas
         return "";
     }
 
     public String toStringArchivoComida(String argumentos) {
+        /* Convierte a String parseado para guardar el archivo (es invocado en las clases hijas y
+         se concatena con los argumentos propios de cada una)
+        */
         return (id + ";" + nombre + ";" + precio + ";" + disponible + ";" + descripcion + ";" + tipo + ";" + argumentos);
     }
 }

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cliente {
+    // Clase que representa al cliente que hace el pedido
+
     private String idCliente;
     public String telefono;
     public int cantPedidos;
@@ -45,6 +47,7 @@ public class Cliente {
     }
 
     //toString
+    // Devuelve un String formateado para mostrar por pantalla al usuario los atributos de un objeto
     public String toString() {
         return super.toString() + "IdCliente: " + idCliente + "\t\tTelefono: " + telefono + "\t\tCantPedidos: " + cantPedidos + "\t\tPedidos: " + pedidosHechos;
     }

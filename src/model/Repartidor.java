@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class Repartidor {
+    // Clase que representa al repartidor, cada pedido tiene un repartidor asignado
+
     /* Agregamos los atributos */
     public String idRepartidor;
     public int cantPedidos = 0;
@@ -45,6 +47,8 @@ public class Repartidor {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
+
+    // Funcion que devuelve como String los atributos del repartidor para mostrar por consola
     public String toString() {
         return (idRepartidor + ";" + cantPedidos + ";" + pedidos + ";" + activo);
     }

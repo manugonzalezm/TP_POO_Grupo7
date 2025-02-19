@@ -1,6 +1,7 @@
 package model;
 
 public class Pasta extends Comida{
+    // Clase hija de "Comida" que representa a las comidas de este tipo
     public String salsa;
     public boolean casero;
 
@@ -28,12 +29,14 @@ public class Pasta extends Comida{
     }
 
     // toString
+    // Devuelve un String formateado para mostrar por pantalla al usuario los atributos de un objeto
     public String toString() {
         return super.toString() + "\t\tSalsa: " + salsa + "\t\tCasero: " + casero;
     }
 
     @Override
     public String toStringArchivo() {
+        // Convierte a String parseado para guardar el archivo
         String argumentos = salsa + ";" + casero;
         return super.toStringArchivoComida(argumentos);
     }
